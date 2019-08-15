@@ -1,0 +1,220 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Insert row in a table - w3resource</title>
+</head>
+<body>
+<table id="sampleTable" border="1">
+    <tr><td>Row1 cell1</td>
+        <td>Row1 cell2</td></tr>
+    <tr><td>Row2 cell1</td>
+        <td>Row2 cell2</td></tr>
+</table><br>
+<input type="button" onclick="insert_Row()" value="Insert row">
+
+<script>
+    function  insert_Row() {
+        var row = document.createElement("tr");
+        var cell1 = document.createElement("td");
+        var cell2 = document.createElement("td");
+        var node1 = document.createTextNode("Row3 cell1");
+        var node2 = document.createTextNode("Row3 cell2");
+        cell1.appendChild(node1);
+        cell2.appendChild(node2);
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+
+        var y = document.getElementById("sampleTable");
+        y.appendChild(row);
+
+    }
+</script>
+</body>
+</html>-->
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Change the content of a cell</title>
+    <style type="text/css">
+        body {margin: 30px;}
+    </style>
+</head><body>
+<table id="myTable" border="1">
+    <tr><td>Row1 cell1</td>
+        <td>Row1 cell2</td></tr>
+    <tr><td>Row2 cell1</td>
+        <td>Row2 cell2</td></tr>
+    <tr><td>Row3 cell1</td>
+        <td>Row3 cell2</td></tr>
+</table><form>
+    <input type="button" onclick="changeContent()" value="Change content">
+</form>
+<script>
+
+        function changeContent()
+        {
+            var Row_to_Modifiy = prompt("Enter Row index",'0');
+            var col_to_Modifiy = prompt("Column :",'0');
+            var new_text =prompt("Enter some thing:","new Cell content......");
+            var myTable = document.getElementById("myTable");
+        myTable.rows[Row_to_Modifiy].cells[col_to_Modifiy].textContent=new_text;
+        }
+
+
+</script>
+</body></html>-->
+
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Change the content of a cell</title>
+    <style type="text/css">
+        body {margin: 30px;}
+    </style>
+</head>
+<body>
+<table id="myTable" border="1">
+</table>
+<form>
+    <input type="button" onclick="createTable()" value="Create the table">
+</form>
+
+<script>
+    function createTable() {
+        var rowNum = eval(prompt("Row"));
+        var colNum = eval(prompt("Col"));
+        //document.write(rowNum+" "+colNum);
+        var all = document.getElementById("myTable");
+        for(var i=0;i<rowNum;i++)
+        {
+            var row = document.createElement("tr");
+            for(var j=0;j<colNum;j++)
+            {
+                var col = document.createElement("td");
+                var text = document.createTextNode("Row-" +i+ " Column-"+j);
+                col.appendChild(text);
+                row.appendChild(col);
+            }
+            all.appendChild(row);
+        }
+
+
+    }
+</script>
+</body>
+</html>-->
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>Remove items from a dropdown list</title>
+</head>
+<body>
+<form>
+    <select id="colorSelect">
+        <option>Red</option>
+        <option>Green</option>
+        <option>White</option>
+        <option>Black</option>
+    </select>
+    <input type="button" onclick="removecolor()" value="Select and Remove">
+</form>
+<script>
+    function removecolor() {
+        var x = document.getElementById("colorSelect");
+        x.remove(x.selectedIndex);
+
+
+    }
+</script>
+</body>
+</html>-->
+
+
+<!--
+
+<head>
+    <meta charset=utf-8 />
+    <title>Window Size : height and width</title>
+</head>
+&lt;!&ndash; Resize the window (here output panel) and see the result !&ndash;&gt;
+<body onload="getSize()" onresize="getSize()">
+<div id="wh">
+    &lt;!&ndash; Place height and width size here! &ndash;&gt;
+</div>
+<script>
+    function getSize()
+    {
+        var w = document.documentElement.clientWidth;
+        var h = document.documentElement.clientHeight;
+
+// put the result into a h1 tag
+        document.getElementById('wh').innerHTML = "<h1>Width: " + w + " â€¢ Height: " + h + "</h1>";
+    }
+</script>
+</body>-->
+
+
+
+    <!--function highlight() {
+        var bold = document.getElementsByTagName('strong');
+        for (var i=0;i<bold.length;i++)
+        {
+            bold[i].style.color = "green";
+
+        }
+    }
+
+    function return_normal() {
+        var bold = document.getElementsByTagName('strong');
+        for (var i=0;i<bold.length;i++) {
+            bold[i].style.color = "black";
+        }
+    }-->
+
+<!--
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Get And Style All Tags</title>
+    <script>
+        function highlight() {
+            var bold = document.getElementsByTagName('strong');
+            for (var i=0;i<bold.length;i++)
+            {
+                bold[i].style.color = "red";
+
+            }
+        }
+
+        function return_normal() {
+            var bold = document.getElementsByTagName('strong');
+            for (var i=0;i<bold.length;i++) {
+                bold[i].style.color = "black";
+            }
+        }
+    </script>
+</head>
+<body>
+<p>[<a href="#" onMouseOver="highlight()" onMouseOut="return_normal()">On mouse over here bold words of the following paragraph will be highlighted</a>]</p>
+<p><strong>We</strong> have just started <strong>this</strong> section for the users (<strong>beginner</strong> to intermediate) who <strong>want</strong> to work with <strong>various</strong> JavaScript <strong>problems</strong> and write scripts online to <strong>test</strong> their JavaScript <strong>skill</strong>.</p>
+</body>
+</html>
+-->
+
+
+

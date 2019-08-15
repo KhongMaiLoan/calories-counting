@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:background="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+</head>
+
+<style>
+    .w3-lobster {
+        font-family: "Lobster", serif;
+    }
+    .w3-tangerine {
+        font-family: "Tangerine", serif;
+    }
+    .nav_hang{
+        background-image: url("/images/welcome4.png");
+    }
+
+    body{
+        background-image: url("/images/welcome4.png");
+    }
+</style>
+<body>
+
+<!--Navigator-->
+
+<div class="w3-top">
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Đóng &times;</button>
+        <a href="http://localhost:8080/search" class="w3-bar-item w3-button w3-yellow">Search food's nutrition</a>
+        <a href="http://localhost:8080/caloriesquantity" class="w3-bar-item w3-khaki">Calories quantity</a>
+        <a href="http://localhost:8080/consumptioncalories" class="w3-bar-item w3-button w3-orange">Calories Consumption </a>
+        <a href="http://localhost:8080/" class="w3-bar-item w3-button w3-amber">User</a>
+    </div>
+
+    <div class="w3-teal" >
+        <button class="w3-button w3-teal w3-xlarge w3-right " onclick="openRightMenu()">&#9776;</button>
+        <div class="w3-container nav_hang w3-wide  ">
+            <h1 class="w3-tangerine " style="font-weight: bolder;"> Welcome to Farfalle - Calories control App</h1>
+            <h2 class="w3-tangerine " style="font-weight: bolder;"> so glad you're here</h2>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<!--Add user-->
+
+<div class="col-3 "></div>
+<div class="container col-6" style=" background: rgba(255, 255, 255, 0.5);"><br><br>
+    <div class="col-md-auto">
+
+
+
+
+
+
+        <form th:object="${user}" th:action="@{save}" action="#" method="post">
+            <div>
+                <label th:text="Tên" th:for="name"></label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="Mai Anh"/>
+            </div>
+            <div style="clear: both; display: block; height: 10px"></div>
+            <div>
+                <label th:text="Email" th:for="email"></label>
+                <input type="text" th:field="*{email}" class="form-control" placeholder="maianh@gmail.com"/>
+            </div>
+            <div style="clear: both; display: block; height: 10px"></div>
+            <div>
+                <label th:text="Phone" th:for="phone"></label>
+                <input type="text" th:field="*{phone}" class="form-control" placeholder="093674112"/>
+            </div>
+            <div style="clear: both; display: block; height: 10px"></div>
+
+            <input type="submit" class="btn btn-success" value="Xong" />
+
+            <br><br>
+        </form>
+
+
+
+    </div>
+</div>
+<button id="home" class="w3-button w3-teal w3-display-bottomleft" style=" background: rgba(255, 255, 255, 0.5);" onclick="returnHome()">Chuyen den trang chu</button>
+
+
+<script>
+    function openRightMenu() {
+        document.getElementById("rightMenu").style.display = "block";
+    }
+
+    function closeRightMenu() {
+        document.getElementById("rightMenu").style.display = "none";
+    }
+
+    function returnHome() {
+        window.location.href = "http://localhost:8080/search/" ;
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tìm kiếm - freetuts.net</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        #search_advance{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Tìm kiếm dữ liệu</h1>
+<table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+        <td>Nhập tiêu đề</td>
+        <td>
+            <input type="text" id="title" value=""/> <br/>
+            <a href="#" id="show_search_advance" onclick="show_search_advance()">Tìm kiếm nâng cao</a>
+        </td>
+    </tr>
+    <tr id="search_advance">
+        <td>Chọn chuyên mục</td>
+        <td>
+            <select id="category">
+                <option value="1">PHP</option>
+                <option value="2">Javascript</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="button" id="btn_search" value="Tìm kiếm"/>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function  show_search_advance() {
+        var a = document.getElementById("show_search_advance");
+        var b = document.getElementById("search_advance");
+
+        if(a.innerHTML == "Tìm kiếm nâng cao")
+        {
+            a.innerHTML="Bỏ tìm kiếm nâng cao";
+            b.style.display = "table-row";
+        }
+        else if(a.innerHTML == "Bỏ tìm kiếm nâng cao")
+        {
+            a.innerHTML="Tìm kiếm nâng cao";
+            b.style.display = "none";
+        }
+
+    }
+</script>
+</body>
+</html>-->
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xóa thẻ HTML - freetuts.net</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script>
+        window.onload = function () {
+            var buttons = document.getElementsByTagName("input");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function () {
+                    this.parentElement.parentElement.remove();
+                });
+
+            }
+        };
+    </script>
+</head>
+<body>
+<h1>Xóa thẻ HTML</h1>
+<table border="1" cellspacing="0" cellpadding="5">
+    <tr>
+        <td>1</td>
+        <td>Tiêu đề thứ nhất</td>
+        <td>
+            <input type="button" value="Delete"/>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Tiêu đề thứ hai</td>
+        <td>
+            <input type="button" value="Delete"/>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Tiêu đề thứ ba</td>
+        <td>
+            <input type="button" value="Delete"/>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tiêu đề thứ tư</td>
+        <td>
+            <input type="button" value="Delete"/>
+        </td>
+    </tr>
+</table>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thêm thẻ HTML - freetuts.net</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>Thêm thẻ HTML</h1>
+
+<input type="text" id="title" value=""/>
+<input type="button" id="button_add" value="Add" onclick="add_element()"/>
+
+<div id="result"></div>
+
+<script>
+    function add_element() {
+        var x = document.getElementById("result");
+        var y = document.getElementById("title");
+        x.innerHTML = y.value;
+        x.style.backgroundColor= "red";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<HTML lang="en">
+<HEAD>
+    <TITLE> An Event Handler Exemple </TITLE>
+
+</HEAD>
+<!--<BODY>
+<FORM NAME="PHIEU_DIEU_TRA">
+
+    Ten<BR>
+    Ten <INPUT TYPE=TEXT NAME="TEN" MAXLENGTH=10 SIZE=10><BR>
+    Dem <INPUT TYPE=TEXT NAME="DEM" MAXLENGTH=15 SIZE=10><BR>
+    Ho  <INPUT TYPE=TEXT NAME="HO" MAXLENGTH=10 SIZE=10><BR>
+    Age <INPUT TYPE=TEXT NAME="AGE" MAXLENGTH=3 SIZE=2 onChange="CheckAge(PHIEU_DIEU_TRA)"><BR>
+    <P>
+
+        Mua<BR>
+        Xuan<INPUT TYPE=RADIO NAME="MUA" VALUE="Mua xuan">
+        Ha<INPUT TYPE=RADIO NAME="MUA" VALUE="Mua ha">
+        thu<INPUT TYPE=RADIO NAME="MUA" VALUE="Mua thu">
+        Dong<INPUT TYPE=RADIO NAME="MUA" VALUE="Mua dong">
+    <P>
+
+        Hoat dong<BR>
+        Di bo<INPUT TYPE=CHECKBOX NAME="HOAT_DONG" VALUE="Di bo">
+        Truot tuyet<INPUT TYPE=CHECKBOX NAME="HOAT_DONG" VALUE="Truot tuyet">
+        Boi<INPUT TYPE=CHECKBOX NAME="HOAT_DONG" VALUE="Duoi nuoc">
+        Dap xe<INPUT TYPE=CHECKBOX NAME="HOAT_DONG" VALUE="Dap xe">
+    <P>
+        <INPUT TYPE=SUBMIT value="Submit">
+    <INPUT TYPE=RESET>
+</FORM>
+</BODY>-->
+
+<!--<body>
+<form NAME="choose">
+1: <input type="radio" name="clickk" value="Ban da chon 1" onclick="CheckAge(choose)">
+2: <input type="radio" name="clickk" value="Ban da chon 2" onclick="CheckAge(choose)">
+3: <input type="radio" name="clickk" value="Ban da chon 3" onclick="CheckAge(choose)">
+</form>
+
+<SCRIPT LANGUAGE= "JavaScript">
+    function CheckAge(form) {
+        document.write(form.clickk.value);
+    }
+</SCRIPT>
+</body>-->
+
+
+<!--<body>
+<form name = "hello">
+    <input type="button" name="button" value="message" onclick="alert('Hello')"/>
+</form>
+</body>-->
+
+<!--<body>
+<a href="https://spiderum.com" onclick="clicked();">description</a>
+<script>
+    function clicked () {
+        var x = confirm("Sure?")
+        if(x)
+        {
+            top.location = "YOUR LINK GOES HERE"
+        }
+
+    }
+</script>
+</body>-->
+
+<body>
+<form name="calculator">
+    <input type="text" name="a" size="4" value="0"/>
+    <input type="button" name="+" value="+" onclick="cal_cong(calculator);">
+    <input type="text" name="b" size="4" value="0"/>
+    <input type="text" name="answer" />
+
+</form>
+
+<script>
+    function cal_cong(form) {
+        a = eval(form.a.value);
+        b = eval(form.b.value);
+        form.answer.value = a + b;
+
+    }
+</script>
+</body>
+
+
+</HTML>
+
+
+<!--
+
+<HTML lang="en">
+<HEAD>
+    <TITLE> An Event Handler Exemple </TITLE>
+
+</HEAD>
+<BODY>
+<script>
+    var x = confirm("Nhan loi chao k")
+    if(x)
+    {
+        document.writeln("Chao");
+        document.write("<IMG SRC='images/light.jpg'>");
+    }
+    else
+    {
+        document.write("Cut");
+    }
+</script>
+</BODY>
+</HTML>
+-->

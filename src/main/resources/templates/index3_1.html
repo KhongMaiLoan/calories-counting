@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<title>food</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--<link rel="stylesheet"  href="/style.css"/>-->
+<style>
+    .w3-lobster {
+        font-family: "Lobster", serif;
+    }
+    .w3-tangerine {
+        font-family: "Tangerine", serif;
+    }
+
+    .nav_hang{
+        background-image: url("/images/nav_bk.jpg");
+    }
+    .input-container{
+        display: flex;
+        width: 30%;
+        /*margin-bottom: 15px;*/
+    }
+
+</style>
+
+<body>
+
+<!--Navigator-->
+<div class="w3-top">
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Đóng &times;</button>
+        <a th:href="|http://localhost:8080/${userSession.getEmail()}/search|" class="w3-bar-item w3-button w3-yellow">Search food's nutrition</a>
+        <a th:href="|http://localhost:8080/${userSession.getEmail()}/caloriesquantity|" class="w3-bar-item w3-button w3-khaki">Calories quantity</a>
+        <a th:href="|http://localhost:8080/${userSession.getEmail()}/consumptioncalories|" class="w3-bar-item w3-button w3-orange">Calories Consumption </a>
+        <a href="http://localhost:8080/logout" class="w3-bar-item w3-button w3-amber">Log out</a>
+    </div>
+
+    <div class="w3-teal" >
+        <button class="w3-button w3-teal w3-xlarge w3-right " onclick="openRightMenu()">&#9776;</button>
+        <div class="w3-container nav_hang w3-wide  ">
+            <h1 class="w3-tangerine" style="font-weight: bolder">Calories Control</h1>
+            <h2 class="w3-tangerine" style="font-weight: bolder">Refresh your life</h2>
+        </div>
+    </div>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<!--Presentation -->
+
+<div class="w3-container w3-teal ">
+    <h1 class="w3-lobster "> Xem lượng dinh dưỡng trong thực phẩm</h1>
+</div>
+
+<div class="w3-container">
+    <p> <br> </p>
+</div>
+
+<!--Search field-->
+<form class="w3-container">
+    <h2>Nhập tên thức ăn </h2>
+    <div class="input-container">
+        <input class="w3-input w3-animate-input" type="text"
+               id="foodName" placeholder="Bánh bao" style="width:140px"/>
+    </div>
+    <br>
+</form>
+
+<div class="w3-container">
+    <button type="button" class="w3-button w3-teal w3-round-xxlarge" onclick="searchFunction()">
+        Tìm kiếm
+    </button>
+</div>
+
+<br><br>
+<div class="w3-container w3-teal">
+    <h5>FARFALLE</h5>
+    <p>Phần mềm quản lý calories online - K62 CACLC 1 - UET - VNU</p>
+</div>
+
+
+
+
+<script th:inline="javascript">
+    var mail = [[${userSession.getEmail()}]];
+    function openRightMenu() {
+        document.getElementById("rightMenu").style.display = "block";
+    }
+
+    function closeRightMenu() {
+        document.getElementById("rightMenu").style.display = "none";
+    }
+
+    function searchFunction() {
+        var x = document.getElementById("foodName").value;
+        window.location.href = "http://localhost:8080/"+ mail +"/infor/" + x ;
+    }
+
+    //
+</script>
+
+
+</body>
+</html>

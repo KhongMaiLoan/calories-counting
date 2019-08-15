@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:background="http://www.w3.org/1999/xhtml">
+<title>Lượng calo cần thiết</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+<style>
+    body{
+        background-image: url("/images/bmr1.jpg");
+    }
+
+    .w3-lobster {
+        font-family: "Lobster", serif;
+    }
+    .w3-tangerine {
+        font-family: "Tangerine", serif;
+    }
+
+    .nav_hang{
+        background-image: url("/images/nav_bk.jpg");
+    }
+    .input-container{
+        display: flex;
+        width: 30%;
+        /*margin-bottom: 15px;*/
+    }
+
+</style>
+<body>
+
+<!--Navigator-->
+<div class="w3-top">
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Đóng &times;</button>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/search|" class="w3-bar-item w3-button w3-yellow">Search food's nutrition</a>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/caloriesquantity|" class="w3-bar-item w3-button w3-khaki">Calories quantity</a>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/consumptioncalories|" class="w3-bar-item w3-button w3-orange">Calories Consumption </a>
+        <a href="http://localhost:8080/logout" class="w3-bar-item w3-button w3-amber">Log out</a>
+    </div>
+
+    <div class="w3-teal" >
+        <button class="w3-button w3-teal w3-xlarge w3-right " onclick="openRightMenu()">&#9776;</button>
+        <div class="w3-container nav_hang w3-wide  ">
+            <h1 class="w3-tangerine" style="font-weight: bolder">Calories Control</h1>
+            <h2 class="w3-tangerine" style="font-weight: bolder">Refresh your life</h2>
+        </div>
+    </div>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<!--Header-->
+<div class="w3-container w3-teal ">
+    <h1 class="w3-lobster "> Tính BMR - Lượng calo cần trong ngày</h1>
+</div>
+
+<!--User's physical stautus w3-light-grey-->
+<div  style="display:inline-block; width: 55%;">
+
+    <!--Form with object: ${user}-->
+
+    <div class="w3-container w3-card-4  w3-text-blue w3-margin " style="width: 85%; background: rgba(255, 255, 255, 0.5);">
+        <h2 class="w3-center"> Thông tin người dùng </h2>
+
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px">
+                <i class="w3-xxlarge fas fa-birthday-cake"></i></div>
+            <div class="w3-rest">
+                <span class="w3-input w3-border" th:text="${user.getAge()}">
+                </span>
+            </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px"></div>
+                <div class="w3-rest">
+                    <i class="w3-xxlarge fa fa-venus-mars"></i>
+                    <span class="w3-input w3-border"  th:text="${user.getGender()}">
+                    </span>
+
+                </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fas fa-male"></i></div>
+            <div class="w3-rest">
+                <span th:text="|${user.height} m|" class="w3-input w3-border" >
+                </span>
+            </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px">
+                <i class="w3-xxlarge fa fa-balance-scale"></i></div>
+            <div class="w3-rest">
+                <span th:text="|${user.weight} kg|" class="w3-input w3-border" >
+                </span>
+            </div>
+        </div>
+
+        <!--so lieu the duc-->
+        <span th:text="${user.trainingintensity}">
+
+        </span>
+
+    </div>
+</div>
+<!--Result-->
+
+<div style=" display:inline-block; width:40%;" class="w3-container w3-card-4 w3-margin " >
+    <header class="w3-container w3-blue">
+        <h1>Kết quả</h1>
+    </header>
+
+    <div class="w3-container w3-white">
+        <p th:text="|BMR = ${user.getBMR()}|"></p>
+    </div>
+
+
+
+   <!--<p style="background-color: azure;">-->
+       <!--*Tập thể dục: là 15-30 phút hoạt động nhịp tim tăng cao.<br>-->
+       <!--*Tập thể dục cường độ cao: là 45-120 phút hoạt động nhịp tim tăng cao.-->
+   <!--</p>-->
+</div>
+
+<!--Footer-->
+<br><br>
+<div class="w3-container w3-teal">
+    <h5>FARFALLE</h5>
+    <p>Phần mềm quản lý calories online - K62 CACLC 1 - UET - VNU</p>
+</div>
+
+
+<script>
+    function openRightMenu() {
+        document.getElementById("rightMenu").style.display = "block";
+    }
+
+    function closeRightMenu() {
+        document.getElementById("rightMenu").style.display = "none";
+    }
+
+
+</script>
+
+</body>
+</html>

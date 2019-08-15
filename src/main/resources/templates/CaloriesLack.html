@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<title>Quantity calories u lack today</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"  href="/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+
+    <style>
+        .w3-lobster {
+            font-family: "Lobster", serif;
+        }
+        .w3-tangerine {
+            font-family: "Tangerine", serif;
+        }
+
+        .nav_hang{
+            background-image: url("/images/nav_bk.jpg");
+        }
+        .input-container{
+            display: flex;
+            width: 30%;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<!--Navigator-->
+<div class="w3-top">
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+        <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Đóng &times;</button>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/search|" class="w3-bar-item w3-button w3-yellow">Search food's nutrition</a>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/caloriesquantity|" class="w3-bar-item w3-button w3-khaki">Calories quantity</a>
+        <a th:href="|http://localhost:8080/${user.getEmail()}/consumptioncalories|" class="w3-bar-item w3-button w3-orange">Calories Consumption </a>
+        <a href="http://localhost:8080/logout/" class="w3-bar-item w3-button w3-amber">Log out</a>
+    </div>
+
+    <div class="w3-teal" >
+        <button class="w3-button w3-teal w3-xlarge w3-right " onclick="openRightMenu()">&#9776;</button>
+        <div class="w3-container nav_hang w3-wide  ">
+            <h1 class="w3-tangerine" style="font-weight: bolder">Calories Control</h1>
+            <h2 class="w3-tangerine" style="font-weight: bolder">Refresh your life</h2>
+        </div>
+    </div>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<!--Presentation -->
+
+<div class="w3-container w3-teal ">
+    <h1 class="w3-lobster "> Tính lượng calo bạn đã tiêu thụ</h1>
+</div>
+
+<div class="w3-container">
+    <p> <br> </p>
+</div>
+
+<!--Search field-->
+<form class="w3-container">
+    <h2>Nhập tên thức ăn </h2>
+    <div class="input-container">
+        <input class="w3-input w3-animate-input" type="text"
+               id="foodName" placeholder="Bánh bao" style="width:140px"/>
+    </div>
+    <br>
+</form>
+
+<div class="w3-container">
+    <button type="button" class="w3-button w3-teal w3-round-xxlarge" onclick="searchFunction()">
+        Tìm kiếm
+    </button>
+</div>
+<br><br>
+
+
+<!--Search result-->
+<div class="w3-container w3-responsive">
+    <table class="w3-table w3-striped w3-table-all w3-hoverable">
+        <tr>
+            <th>Tên thức ăn</th>
+            <th>Suất ăn</th>
+            <th>Số lượng </th>
+            <th>Calo (kcal)</th>
+            <th>Đạm (g)</th>
+            <th>Béo (g)</th>
+            <th>Bột đường (g)</th>
+            <th>Xơ (g)</th>
+            <th>Select</th>
+        </tr>
+
+        <tr th:each="food:${foodList}">
+            <td th:text="${food.getTen()}">Thit ga</td>
+            <td th:text="${food.getSoLuong()}" >1 con</td>
+            <td>
+                <select>
+                    <option value="0">So luong:</option>
+                    <option value="1">1/2</option>
+                    <option value="2">1</option>
+                    <option value="3">1.5</option>
+                    <option value="4">2</option>
+                    <option value="4">2.5</option>
+                    <option value="4">3</option>
+                </select>
+                So luong: x2
+            </td>
+            <td th:text="${food.getCalo()}" >10111000</td>
+            <td th:text="${food.getDam()}" >50000</td>
+            <td th:text="${food.getBeo()}" >1000</td>
+            <td th:text="${food.getBotDuong()}" >0</td>
+            <td th:text="${food.getXo()}" >0</td>
+            <td>
+                <button class="w3-button w3-teal"  th:data-thing="${food.getTen()}" th:so-luong="${food.getSoLuong()}"
+                        th:onclick="|addCalo('${food.getCalo()}','${food.getDam()}','${food.getBeo()}','${food.getBotDuong()}','${food.getXo()}',this.getAttribute('data-thing'), this.getAttribute('so-luong'))|">
+                    Add
+                </button>
+            </td>
+
+        </tr>
+
+    </table>
+</div>
+<br>
+
+<p class="w3-container" th:text="| BMR = ${user.getBMR()}|">
+</p>
+<div class="w3-khaki w3-round-xxlarge">
+    <div id="calo_bar"
+         th:class=" (${user.checkthredhold()}) ?
+         'w3-amber w3-round-xxlarge w3-panel w3-leftbar w3-border-light-green  w3-text-indigo' :
+          'w3-red w3-round-xxlarge w3-panel w3-leftbar w3-border-light-green  w3-text-indigo'  "
+
+         th:style=" 'width:' + @{${user.sumcalo_divide_bmr()}} +'%'"
+         th:text="|Calories : ${user.sumcalo}|">
+        calorie = 0
+    </div>
+</div>
+
+<!-- chart code add-->
+<div id="container" style="width: 90%; height: 400px;"></div>
+
+<script>
+    anychart.onDocumentReady(function() {
+
+        // set the data
+        var data = [
+            {x: "Đạm", value: user_dam},
+            {x: "Béo", value: user_beo},
+            {x: "Bột đường", value: user_botduong},
+            {x: "Xơ", value: user_xo}
+        ];
+
+        // create the chart
+        var chart = anychart.pie(data);
+
+        // set the chart title
+        chart.title("HÀM LƯỢNG CÁC CHẤT DINH DƯỠNG TRONG THỨC ĂN");
+
+        // add the data
+        chart.data(data);
+
+        // display the chart in the container
+        chart.container('container');
+        // set legend position
+        chart.legend().position("right");
+        // set items layout
+        chart.legend().itemsLayout("vertical");
+        chart.draw();
+
+    });
+</script>
+
+
+<!--Refresh list foods -->
+<br><br>
+<div class="w3-container">
+    <button class="w3-button w3-green w3-round-xxlarge" type="button" onclick="refresh_food()">
+        <i  class="fa fa-refresh" > Bỏ chọn tất cả đồ bạn đã ăn </i>
+    </button>
+</div>
+
+<table class="w3-table">
+    <tr>
+        <th class=" w3-panel w3-leftbar w3-border-light-green  w3-text-indigo  "
+            style="width:10%"   >
+            Bạn đã ăn :</th>
+    </tr>
+    <tr th:each="food: ${user.getFoodlist()}">
+        <td class="w3-text-teal" th:text="${food}">Banh man thau nhan hoa qua</td>
+    </tr>
+</table>
+
+<!--Footer-->
+<div class="w3-container w3-teal">
+    <h5>FARFALLE</h5>
+    <p>Phần mềm quản lý calories online - K62 CACLC 1 - UET - VNU</p>
+</div>
+
+<script th:inline="javascript">
+
+    var food_name = [[${user.getSelectfood()}]];
+    var user_calo = [[${user.sumcalo}]];
+
+    var user_dam= [[${user.sumdam}]];
+    var user_beo= [[${user.sumbeo}]];
+    var user_botduong= [[${user.sumbotduong}]];
+    var user_xo= [[${user.sumxo}]];
+    var mail =  [[${user.getEmail()}]];
+    function openRightMenu()
+    {
+        document.getElementById("rightMenu").style.display = "block";
+    }
+
+    function closeRightMenu() {
+        document.getElementById("rightMenu").style.display = "none";
+    }
+
+    function searchFunction() {
+        var x = document.getElementById("foodName").value;
+        window.location.href = "http://localhost:8080/"+ mail +"/calorieslack/" + x + "/0/0/0/0/0/ / /";
+    }
+
+    function addCalo(x, a,b,c,d, y,z)
+    {
+        window.location.href = "http://localhost:8080/"+ mail +"/calorieslack/" + food_name + "/" + x  + "/" + a + "/" + b + "/" + c + "/" + d + "/" + y + "/"+z;
+    }
+
+    function refresh_food() {
+        var x = document.getElementById("foodName").value;
+        window.location.href = "http://localhost:8080/"+ mail +"/calorieslack/refreshfood/" + x + "/0"+"/ /  /" ;
+    }
+</script>
+
+
+</body>
+</html>

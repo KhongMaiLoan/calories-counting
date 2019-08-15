@@ -1,0 +1,15 @@
+.w3-lobster {
+    font-family: "Lobster", serif;
+}
+.w3-tangerine {
+    font-family: "Tangerine", serif;
+}
+
+.nav_hang{
+    background-image: url("/images/nav_bk.jpg");
+}
+.input-container{
+    display: flex;
+    width: 30%;
+    /*margin-bottom: 15px;*/
+}

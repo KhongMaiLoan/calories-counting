@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<body>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Profile Page</title>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mr+Dafoe|Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <style>
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            position: relative;
+        }
+
+        main {
+            background: -webkit-linear-gradient(180deg, #9D4D4D, #fff);
+            background: linear-gradient(180deg, #9D4D4D, #fff);
+            margin-top: 59px;
+            padding-top: 10px;
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            display: inline;
+            font-size: 50px;
+            font-family: 'Mr Dafoe', cursive;
+            padding-left: 30px;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 420px) {
+            h1 {
+                font-size: 25px;
+            }
+        }
+
+        h2, h3, h4, h5, h6 {
+            font-family: 'Mr Dafoe', cursive;
+            color: #7B0F0F;
+        }
+        p, button {
+            font-family: 'Roboto', sans-serif;
+        }
+        p {
+            font-size: 16px;
+        }
+        hr {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            width: 60%;
+            height: 1px;
+            padding-bottom: 3px;
+            border-color: #7B0F0F;
+            color: #7B0F0F;
+            background-color: #7B0F0F;
+        }
+        input,
+        textarea,
+        .sub {
+            display: block;
+            margin-left: 10px;
+        }
+        input,
+        textarea {
+            width: 85%;
+            margin-bottom: 10px;
+        }
+        .container-fluid {
+            padding: 0;
+        }
+        #welcome-section {
+            min-height: 100vh;
+        }
+        .well {
+            margin-top: 20px;
+            background-color: whitesmoke;
+            border: solid 1px #7B0F0F;
+        }
+        header,
+        footer {
+            background: #7B0F0F;
+            padding: 0;
+        }
+        figure {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.3);
+        }
+        figcaption {
+            padding-top: 2px;
+            font-size: 14px;
+        }
+        header {
+            position: fixed;
+            z-index: 9999;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        footer {
+            margin-top: 2rem;
+        }
+        .navbar {
+            background: #7B0F0F;
+            border: 0;
+        }
+        .social {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .navlink {
+            margin: 0;
+            color: white !important;
+            background-color: #7B0F0F;
+            float: right;
+            border-radius: 10px;
+        }
+
+        .navbar-toggle {
+            margin-left: 30px;
+            margin-right: 30px;
+            color: white;
+            background-color: transparent;
+            border: solid 1px white;
+        }
+
+        button {
+            color: white;
+            background-color: #7B0F0F;
+            border: solid 1px white;
+        }
+
+        .navbar-right {
+            margin-right: 10px;
+        }
+        .me {
+            float: right;
+            margin: 5px;
+            border: solid #7B0F0F 2px;
+            height: 200px;
+            width: 200px;
+            box-shadow: 0 10px 20px rgba(123, 15, 15, 0.2), 0 6px 6px rgba(123, 15, 15, 0.3);
+        }
+        .btn-circle {
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            padding: 10px 10px;
+            font-size: 20px;
+            line-height: 1.33;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.3);
+        }
+        .btn-submit {
+            color: white;
+            background-color: #7B0F0F;
+        }
+        .small {
+            color: whitesmoke;
+        }
+        .portfolio {
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .thumbnail {
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .header {
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-default .navbar-nav .active a {
+            background-color: #C69797;
+            color: #2E0607;
+            border-radius: 10px;
+        }
+        .active {
+            background-color: #C69797 !important;
+            color: #2E0607 !important;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<div class="container-fluid" id="welcome-section">
+    <header class="navbar navbar-fixed-top navbar-default" id="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1>Farfalle</h1>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="#welcome-section" class="navlink">Home</a></li>
+                    <li> <a href="#about" class="navlink">About</a></li>
+                    <li><a href="#projects" class="navlink">Day analysis</a></li>
+                    <li><a href="#contact" class="navlink">Month analysis
+
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="row">
+            <div class="col-xs-10 well col-xs-offset-1" id="about">
+                <h2 class="text-center">Thông tin cá nhân</h2>
+                <hr>
+                <img src="https://vignette.wikia.nocookie.net/onepunchman/images/2/25/Tatsumaki_anime.jpg/revision/latest?cb=20160106124816&path-prefix=es" class="img-circle me" alt="Avatar">
+                <!--<p>Hi! Welcome to my portfolio website. I'm Becka and I consider myself a web developer in training. </p>
+                <p> I taught myself html and css several years ago and created a few personal websites but never went much beyond that until now. I am currently refreshing and updating my knowledge to the latest specifications and developing my coding skills further
+                    with freeCodeCamp.</p>
+                <p>This Portfolio will showcase the projects I build while working through the freeCodeCamp courses. Right now I have only two projects completed (of which this portfolio site is one. I will update this site whenever I complete a new project. </p>-->
+                <p th:text=" 'User\'s name: ' + ${user.name} + ' ' + ${user.familyname} + ' ' + ${user.lastName}">User name</p>
+                <p th:text=" 'Gender: ' + ${user.gender}">User gender</p>
+                <!--<p th:text=" 'Phone: ' + ${user.phone}">User phone</p>-->
+                <p th:text=" 'Email: ' + ${user.email}">User email</p>
+                <p th:text=" 'Age: ' + ${user.age}">User age</p>
+                <p th:text=" 'Height: ' + ${user.height}">User height</p>
+                <p th:text=" 'Weight: ' + ${user.weight}">User weight</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 well col-xs-offset-1" id="projects">
+                <h2 class="text-center">Day analysis</h2>
+                <hr>
+                <div class="row portfolio">
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail project-tile">
+                            <a href="https://codepen.io/Shutsumon/full/vmEvzp/"><img src="https://www.dropbox.com/s/olcyybvn1i82ga4/tribute.PNG?raw=1" alt="placeholder"></a>
+                            <figcaption><a href="https://codepen.io/Shutsumon/full/vmEvzp/">Build a Tribute Page</a></figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail">
+                            <a href="#"><img src="https://placehold.it/500x250" alt="placeholder"></a>
+                            <figcaption>Random Quote Machine</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="row portfolio">
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail">
+                            <a href="#"><img src="https://placehold.it/500x250" alt="placeholder"></a>
+                            <figcaption>Local Weather</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail">
+                            <a href="#"><img src="https://placehold.it/500x250" alt="placeholder"></a>
+                            <figcaption>Wikipedia Viewer</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="row portfolio">
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail">
+                            <a href="#"><img src="https://placehold.it/500x250" alt="placeholder"></a>
+                            <figcaption>Coming Soon</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-xs-6">
+                        <figure class="text-center thumbnail">
+                            <a href="#"><img src="https://placehold.it/500x250" alt="placeholder"></a>
+                            <figcaption>Coming Soon</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 well col-xs-offset-1" id="contact">
+
+                <h2 class="text-center">Month Analysis</h2>
+                <hr>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="text-center social row">
+            <div class="col-xs-12">
+                <a href="https://www.facebook.com/becka.sutton" class="btn btn-primary btn-circle"><i class="fa fa-facebook-f" target="_blank"></i></a>
+                <a href="https://twitter.com/shutsumon" class="btn btn-circle btn-info"><i class="fa fa-twitter" target="_blank"></i></a>
+                <a href="https://www.linkedin.com/in/beckasutton/" class="btn btn-circle btn-primary" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.freecodecamp.com/shutsumon" class="btn btn-circle btn-success" target="_blank" id="profile-link"><i class="fa fa-free-code-camp"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 footer text-center">
+                <p class="small">Written and coded by <a href="https://www.freecodecamp.com/shutsumon" target="_blank">Rebecca Sutton</a></p>
+            </div>
+    </footer>
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        $("body").scrollspy({
+            target: "#myNavbar",
+            offset: 60
+        })
+    });
+    //-- end of scrollspy section --//
+
+    function main() {
+        $('.navlink').on('click', function() {
+            $("a").removeClass('active');
+            $(this).toggleClass('active');
+        });
+
+        $('a[href^="#"]').on('click', function(event) {
+            var target = $(this.getAttribute('href'));
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+            }
+        });
+    }
+
+    $(document).ready(main);
+</script>
+
+</body>
